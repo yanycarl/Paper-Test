@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int[] mN = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::valueOf).toArray(); 
+        int m = mN[1];
+        int[] lengs = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::valueOf).toArray();
+        double[] newString = new double[m];
+        
+        if(mN[1] > mN[0]){
+            for(int i=0;i<newString.length;i++){
+                if(i >= mN[0]){
+                    newString[i] = Double.MIN_VALUE;
+                }
+                else{
+                    newString[i] = lengs[i];
+                }
+            }
+            while(mN[1]-mN[0] > 0){
+                Arrays.sort(newString);
+                double temp = newString[mN[1]-1]/2.0;
+                newString[mN[1]-mN[0]-1] = temp;
+                newString[mN[1]-1] = temp;
+                mN[0]++;
+            }
+
+            Arrays.sort(newString);
+            System.out.println(String.format("%.2f", newString[0]));
+        }
+        else{
+            Arrays.sort(lengs);
+            System.out.println(String.format("%.2f", (double)lengs[mN[0]-mN[1]]));
+        }
+        return;
+    }
+}

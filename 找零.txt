@@ -1,0 +1,29 @@
+
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int remain = 1024 - scanner.nextInt();
+        int sum = 0;
+        int tempCoin = 0;
+        
+        tempCoin = remain/64;
+        sum += tempCoin;
+        remain -= (tempCoin*64);
+        
+        tempCoin = remain/16;
+        sum += tempCoin;
+        remain -= (tempCoin*16);
+        
+        tempCoin = remain/4;
+        sum += tempCoin;
+        remain -= (tempCoin*4);
+        
+        tempCoin = remain;
+        sum += tempCoin;
+        
+        System.out.println(sum);
+        return;
+    }
+}
